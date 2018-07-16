@@ -6,9 +6,9 @@ puts "I have generated Connect-Four for you, to place your piece, you will just 
 
 start = GameBoard.new
 start.print_board
-turn = PlaceUserInput.new
+turn = PlaceUserInput.new(start)
 user_plays = turn.place_your_piece
-played_column = turn.identify_user_input_position
+played_column = turn.identify_user_input_position(user_plays)
 
 
 
