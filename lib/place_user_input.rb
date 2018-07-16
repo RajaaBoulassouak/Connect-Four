@@ -12,6 +12,9 @@ class PlaceUserInput
   def place_your_piece
     puts "enter a letter from A - G to place your piece"
     @user_input = gets.chomp
+    if gets.chomp != ("a".."g" || "A".."G")
+      puts "enter a letter from A - G tp place your piece"
+    end
   end
   
   def identify_user_input_position(user_input)
@@ -20,16 +23,42 @@ class PlaceUserInput
     end
     user_input_column
   end
-
+  
   def place_user_input(user_input_column)
-    updated_column = user_input_column.reverse.find do |grid| 
-    # split this metod in 2 steps (find grid and replace grid)
-      if grid == "."
-        grid.replace("X")
+    reversed_column = user_input_column.reverse
+    updated_column =  if reversed_column[0] == "."
+                         reversed_column[0] = "X"
+                        elsif reversed_column[1] == "."
+                              reversed_column[1] = "X"
+                        elsif reversed_column[2] == "."
+                              reversed_column[2] = "X"
+                        elsif reversed_column[3] == "."
+                              reversed_column[3] = "X"
+                        elsif reversed_column[4] == "."
+                              reversed_column[4] = "X"
+                        elsif reversed_column[5] == "."
+                              reversed_column[5] = "X"
+                        elsif reversed_column[6] == "."
+                              reversed_column[6] = "X" 
+                      end 
+          reversed_column
+  end 
+  
+  def update_board(reversed_column)
+    new_column = reversed_column.reverse
+    @game_board.original_board.map! do |column|
+      if column[0] == new_column[0]
+        column = new_column
+      else column = column
       end
     end
-    updated_column
+  end 
+  
+  def print_updated_board
+    transposed_board = @game_board.original_board.transpose
+    transposed_board.each do |column|
+      puts column.map { |p| p }.join(" ")    
+    end
   end
-
-
+  
 end
