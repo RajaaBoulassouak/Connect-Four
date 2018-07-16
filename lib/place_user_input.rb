@@ -14,24 +14,22 @@ class PlaceUserInput
     @user_input = gets.chomp
   end
   
-  def identify_user_input_position(user_inpu)
+  def identify_user_input_position(user_input)
     user_input_column = @game_board.original_board.find do |column|
       column[0] == user_input.upcase
     end
     user_input_column
   end
-  
+
+  def place_user_input(user_input_column)
+    updated_column = user_input_column.reverse.find do |grid| 
+    # split this metod in 2 steps (find grid and replace grid)
+      if grid == "."
+        grid.replace("X")
+      end
+    end
+    updated_column
+  end
+
+
 end
-  
-  
-#   def place_user_input(user_input_column)
-#     updated_column = user_input_column.reverse.find do |grid| 
-#       if grid == "."
-#         grid.replace("X")
-#       end
-#     end
-#     updated_column
-#   end  
-# 
-# 
-# end

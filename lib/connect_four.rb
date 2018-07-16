@@ -9,6 +9,7 @@ start.print_board
 turn = PlaceUserInput.new(start)
 user_plays = turn.place_your_piece
 played_column = turn.identify_user_input_position(user_plays)
+place_input = turn.place_user_input(played_column)
 
 
 
