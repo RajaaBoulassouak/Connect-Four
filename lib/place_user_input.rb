@@ -1,4 +1,4 @@
-require './lib/board'
+require './lib/game_board'
 
 class PlaceUserInput
   
@@ -19,7 +19,6 @@ class PlaceUserInput
       column[0] == user_input.upcase
     end
     user_input_column
-    
   end
   
   def place_user_input(user_input_column)

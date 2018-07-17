@@ -1,7 +1,7 @@
 require "minitest/pride"
 require "minitest/autorun"
-require "./lib/board"
-require "./lib/place_piece"
+require "./lib/game_board"
+require "./lib/place_user_input"
 
 class PlaceUserInputTest < Minitest::Test 
   

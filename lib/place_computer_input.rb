@@ -1,4 +1,4 @@
-require './lib/board'
+require './lib/game_board'
 require './lib/place_user_input'
 
 class PlaceComputerInput 
