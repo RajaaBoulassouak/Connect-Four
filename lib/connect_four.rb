@@ -1,29 +1,47 @@
-require './lib/board'
+require './lib/game_board'
 require './lib/place_user_input'
 require './lib/place_computer_input'
 
-puts "I have generated Connect-Four for you, to place your piece, you will just need to enter the letter (A-G) of the column you want to place your piece at"
+class ConnectFour
+  
+  def initialize 
+    @game_board = GameBoard.new
+    @place_users_input = PlaceUserInput.new(@game_board)
+    @place_computer_input = PlaceComputerInput.new(@place_users_input)
+  end
 
-start = GameBoard.new
-start.print_board
 
-user_turn = PlaceUserInput.new(start)
+  def start_game
+    puts "Welcome to Connect Four, you will need to enter a letter (A-G) to choose the."
+    @game_board.print_board
+  end
 
-user_plays = user_turn.place_your_piece
+  def game_run
+    # game = true
+    until false do 
+    user_run
+    computer_run
+    end 
+    # break game == true
+  end
 
-users_column = user_turn.identify_user_input_position(user_plays)
+  def user_run
+    user_turn = @place_users_input.place_your_piece
+    users_column = @place_users_input.identify_user_input_position(user_turn)
+    place_users_input = @place_users_input.place_user_input(users_column)
+    update_user_board = @place_users_input.update_user_input(place_users_input)
+    print_users_board = @place_users_input.print_user_board
+  end
 
-place_users_input = user_turn.place_user_input(users_column)
+  def computer_run
+    computer_turn = @place_computer_input.computer_places_piece
+    update_computer_board = @place_computer_input.update_computer_input(computer_turn)
+    print_computers_board = @place_computer_input.print_computer_board
+  end
 
-update_user_board = user_turn.update_user_input(place_users_input)
+end
 
-print_users_board = user_turn.print_user_board
 
-computer_turn = PlaceComputerInput.new(user_turn)
-
-computer_plays = computer_turn.computer_places_piece
-
-update_computer_board = computer_turn.update_computer_input(computer_plays)
-
-print_computers_board = computer_turn.print_computer_board
-
+start = ConnectFour.new
+start.start_game
+start.game_run
