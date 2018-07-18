@@ -11,12 +11,10 @@ class GameBoardTest < Minitest::Test
   end
   
   def test_it_prints_board
-    skip
+    # skip
     board = GameBoard.new
-    
-    assert_equal "Welcome to Connect Four, you will need to enter a letter (A-G) to choose the column you want to place your piece in."
-    [["A", "B", "C", "D", "E", "F", "G"], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".",
-    ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."]]), board.print_board
+  
+    assert_equal [["A", "B", "C", "D", "E", "F", "G"], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."]], board.print_board
   end
   
   
