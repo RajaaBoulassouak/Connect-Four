@@ -22,7 +22,7 @@ class ConnectFour
       puts "\n"
       computer_run
     end
-    puts "board is fulll"
+    puts "board is fulll is"
   end
   
   def board_full
