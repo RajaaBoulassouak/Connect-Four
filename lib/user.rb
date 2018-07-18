@@ -1,6 +1,6 @@
 require './lib/game_board'
 
-class PlaceUserInput
+class User
   
   attr_accessor :user_input, :game_board
   
@@ -13,18 +13,9 @@ class PlaceUserInput
     puts "Please enter a letter from A - G to place your piece"
     @user_input = gets.chomp
   end
-    # while @user_input = gets.chomp
-    #   if @user_input == "A" || "B" || "C" || "D" || "E" || "F" || "G"
-    #     puts @user_input
-    #   else 
-    #     puts "Invalid entry"
-    #     @user_input = gets.chomp
-    #   end 
-    # end
-  # end
-    
+  
   def identify_user_input_position(user_input)
-    user_input_column = @game_board.original_board.find do |column| 
+    user_input_column = @game_board.board.find do |column| 
       column[0] == user_input.upcase
     end
     user_input_column
@@ -42,10 +33,10 @@ class PlaceUserInput
   
   def update_user_input(reversed_column)
     new_column = reversed_column.reverse
-    new_board = @game_board.original_board.map! do |column|
+    new_board = @game_board.board.map! do |column|
       if column[0] == new_column[0]
           column = new_column
-        eqelse column
+        else column
       end
     end
   end 
