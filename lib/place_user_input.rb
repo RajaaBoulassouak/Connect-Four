@@ -10,10 +10,18 @@ class PlaceUserInput
   end 
   
   def place_your_piece
-    puts "enter a letter from A - G to place your piece"
+    puts "Please enter a letter from A - G to place your piece"
     @user_input = gets.chomp
+    # while @user_input = gets.chomp
+    #   if @user_input == "A" || "B" || "C" || "D" || "E" || "F" || "G"
+    #     puts @user_input
+    #   else 
+    #     puts "Invalid entry"
+    #     @user_input = gets.chomp
+    #   end 
+    # end
   end
-  
+    
   def identify_user_input_position(user_input)
     user_input_column = @game_board.original_board.find do |column| 
       column[0] == user_input.upcase
@@ -33,7 +41,7 @@ class PlaceUserInput
   
   def update_user_input(reversed_column)
     new_column = reversed_column.reverse
-    @game_board.original_board.map! do |column|
+    new_board = @game_board.original_board.map! do |column|
       if column[0] == new_column[0]
         column = new_column
       else column
@@ -41,10 +49,11 @@ class PlaceUserInput
     end
   end 
   
-  def print_user_board
-    transposed_board = @game_board.original_board.transpose
+  def print_user_board(new_board)
+    transposed_board = new_board.transpose
     transposed_board.each do |column|
-      puts column.map { |p| p }.join(" ")    
-    end
+      puts column.map { |p| p }.join(" ") 
+    end 
   end
+  
 end

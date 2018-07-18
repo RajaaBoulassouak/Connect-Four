@@ -17,20 +17,25 @@ class ConnectFour
   end
 
   def game_run
-    # game = true
-    until false do 
-    user_run
-    computer_run
-    end 
-    # break game == true
+    while board_full  
+      user_run
+      puts "\n"
+      computer_run
+    end
+    puts "board is fulll"
   end
-
+  
+  def board_full
+    board = @place_computer_input.place_user_input.game_board.original_board.flatten
+      board.include?(".")
+  end
+  
   def user_run
     user_turn = @place_users_input.place_your_piece
     users_column = @place_users_input.identify_user_input_position(user_turn)
     place_users_input = @place_users_input.place_user_input(users_column)
     update_user_board = @place_users_input.update_user_input(place_users_input)
-    print_users_board = @place_users_input.print_user_board
+    print_users_board = @place_users_input.print_user_board(update_user_board)
   end
 
   def computer_run
@@ -38,7 +43,7 @@ class ConnectFour
     update_computer_board = @place_computer_input.update_computer_input(computer_turn)
     print_computers_board = @place_computer_input.print_computer_board
   end
-
+  
 end
 
 
