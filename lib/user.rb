@@ -2,11 +2,11 @@ require './lib/game_board'
 
 class User
   
-  attr_accessor :user_input, :game_board
+  attr_accessor :user_input, :board
   
-  def initialize(game_board)
+  def initialize(board)
     @user_input = user_input
-    @game_board = game_board
+    @board = board
   end 
   
   def place_your_piece
@@ -15,7 +15,7 @@ class User
   end
   
   def identify_user_input_position(user_input)
-    user_input_column = @game_board.board.find do |column| 
+    user_input_column = @board.find do |column| 
       column[0] == user_input.upcase
     end
     user_input_column

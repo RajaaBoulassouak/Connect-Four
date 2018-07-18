@@ -31,6 +31,10 @@ class ConnectFour
     flattend_board.include?(".")
   end
   
+  # def check_horizontal_win
+    
+    
+  
   def user_run
     users_turn = @user.place_your_piece
     users_column = @user.identify_user_input_position(users_turn)
