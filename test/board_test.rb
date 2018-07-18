@@ -1,6 +1,6 @@
 require "minitest/pride"
 require "minitest/autorun"
-require "./lib/board"
+require "./lib/game_board"
 
 class GameBoardTest < Minitest::Test 
   
