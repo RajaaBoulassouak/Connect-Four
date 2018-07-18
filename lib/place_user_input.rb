@@ -12,6 +12,7 @@ class PlaceUserInput
   def place_your_piece
     puts "Please enter a letter from A - G to place your piece"
     @user_input = gets.chomp
+  end
     # while @user_input = gets.chomp
     #   if @user_input == "A" || "B" || "C" || "D" || "E" || "F" || "G"
     #     puts @user_input
@@ -20,7 +21,7 @@ class PlaceUserInput
     #     @user_input = gets.chomp
     #   end 
     # end
-  end
+  # end
     
   def identify_user_input_position(user_input)
     user_input_column = @game_board.original_board.find do |column| 
@@ -43,8 +44,8 @@ class PlaceUserInput
     new_column = reversed_column.reverse
     new_board = @game_board.original_board.map! do |column|
       if column[0] == new_column[0]
-        column = new_column
-      else column
+          column = new_column
+        eqelse column
       end
     end
   end 

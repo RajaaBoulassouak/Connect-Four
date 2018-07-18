@@ -4,15 +4,16 @@ require './lib/place_computer_input'
 
 class ConnectFour
   
+  attr_accessor :game_board, :place_users_input, :place_computer_input
+  
   def initialize 
     @game_board = GameBoard.new
     @place_users_input = PlaceUserInput.new(@game_board)
     @place_computer_input = PlaceComputerInput.new(@place_users_input)
   end
 
-
   def start_game
-    puts "Welcome to Connect Four, you will need to enter a letter (A-G) to choose the."
+    puts "Welcome to Connect Four, you will need to enter a letter (A-G) to choose the column you want to place your piece in."
     @game_board.print_board
   end
 
@@ -27,7 +28,7 @@ class ConnectFour
   
   def board_full
     board = @place_computer_input.place_user_input.game_board.original_board.flatten
-      board.include?(".")
+    board.include?(".")
   end
   
   def user_run
@@ -46,7 +47,6 @@ class ConnectFour
   
 end
 
-
-start = ConnectFour.new
-start.start_game
-start.game_run
+# start = ConnectFour.new
+# start.start_game
+# start.game_run
