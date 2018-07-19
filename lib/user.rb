@@ -4,9 +4,9 @@ class User
   
   attr_accessor :user_input, :board
   
-  def initialize(board)
+  def initialize(game_board)
     @user_input = user_input
-    @board = board
+    @board = game_board
   end 
   
   def place_your_piece
@@ -22,30 +22,22 @@ class User
   end
   
   def place_user_input(user_input_column)
-   reversed_column = user_input_column.reverse
-   reversed_column.find do |grid|
+  user_input_column.reverse.find do |grid|
      if grid == "."
        grid.replace("X")
      end
    end
-   reversed_column
+   user_input_column
   end
   
-  def update_user_input(reversed_column)
-    new_column = reversed_column.reverse
-    new_board = @game_board.board.map! do |column|
-      if column[0] == new_column[0]
-          column = new_column
-        else column
+  def update_user_input(user_input_column) 
+    @board.map! do |column|
+      if column[0] == user_input_column[0]
+          column = user_input_column
+        else
+          column     
       end
     end
   end 
-  
-  def print_user_board(new_board)
-    transposed_board = new_board.transpose
-    transposed_board.each do |column|
-      puts column.map { |p| p }.join(" ") 
-    end 
-  end
   
 end

@@ -13,26 +13,36 @@ class ConnectFourTest < Minitest::Test
     assert_instance_of ConnectFour, play
   end
   
-  def test_attributes
-    skip
+  def test_attribute
     play = ConnectFour.new
     board = GameBoard.new
-    user_turn = User.new(board)
-    comp_turn = Computer.new(user_turn)
-  
-    assert_equal board, play.game_board
-    assert_equal user_turn, play.user
-    assert_equal comp_turn, play.computer
-  end
-  
-  def test_game_starts
-    
-    play = ConnectFour.new
-    board = GameBoard.new
-    
-    assert_equal ("Welcome to Connect Four, you will need to enter a letter (A-G) to choose the column you want to place your piece in." [["A", "B", "C", "D", "E", "F", "G"], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."]]), board.start_game
-  end
-  
-  
-end
 
+    assert_equal board.board, play.board
+  end
+
+  def test_game_starts
+    play = ConnectFour.new
+    board = GameBoard.new
+
+    assert_equal [["A", "B", "C", "D", "E", "F", "G"], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."]], play.start_game
+  end
+  
+  def test_user_runs
+    play = ConnectFour.new
+    board = GameBoard.new
+    user = User.new(board)
+    computer = Computer.new(board)
+    
+    assert_equal [["A", ".", ".", ".", ".", ".", "."], ["B", ".", ".", ".", ".", ".", "X"], ["C", ".", ".", ".", ".", ".", "."], ["D", ".", ".", ".", ".", ".", "."], ["E", ".", ".", ".", ".", ".", "."], ["F", ".", ".", ".", ".", ".", "."], ["G", ".", ".", ".", ".", ".", "."]], play.user_run
+  end
+  
+  def test_it_prints_board
+    play = ConnectFour.new
+    board = GameBoard.new
+    user = User.new(board)
+    computer = Computer.new(board)
+    
+    assert_equal [["A", "B", "C", "D", "E", "F", "G"], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", "."]], play.print_new_board
+  end
+
+end
