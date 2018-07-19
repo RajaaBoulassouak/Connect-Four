@@ -15,8 +15,7 @@ class GameBoard
   end
   
   def print_board
-    transposed_board = @board.transpose
-    transposed_board.each do |column|
+    @board.transpose.each do |column|
       puts column.map { |p| p }.join(" ")    
     end
   end
